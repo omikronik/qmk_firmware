@@ -34,13 +34,11 @@ subcommands = [
     'qmk.cli.bux',
     'qmk.cli.c2json',
     'qmk.cli.cd',
-    'qmk.cli.cformat',
     'qmk.cli.chibios.confmigrate',
     'qmk.cli.clean',
     'qmk.cli.compile',
     'qmk.cli.docs',
     'qmk.cli.doctor',
-    'qmk.cli.fileformat',
     'qmk.cli.flash',
     'qmk.cli.format.c',
     'qmk.cli.format.json',
@@ -75,14 +73,16 @@ subcommands = [
     'qmk.cli.kle2json',
 <<<<<<< HEAD
     'qmk.cli.migrate',
+<<<<<<< HEAD
 =======
     'qmk.cli.mass_compile',
 >>>>>>> 691668340c (Add `qmk mass-compile`, which intends to supercede `qmk multibuild` whilst providing support for filtering as per data-driven definitions. (#18971))
     'qmk.cli.multibuild',
+=======
+>>>>>>> 4723f308ad (Remove CLI commands: `multibuild`, `cformat`, `fileformat`, `pyformat`. (#19629))
     'qmk.cli.new.keyboard',
     'qmk.cli.new.keymap',
     'qmk.cli.painter',
-    'qmk.cli.pyformat',
     'qmk.cli.pytest',
     'qmk.cli.via2json',
 ]
