@@ -73,7 +73,11 @@ subcommands = [
     'qmk.cli.list.keymaps',
     'qmk.cli.list.layouts',
     'qmk.cli.kle2json',
+<<<<<<< HEAD
     'qmk.cli.migrate',
+=======
+    'qmk.cli.mass_compile',
+>>>>>>> 691668340c (Add `qmk mass-compile`, which intends to supercede `qmk multibuild` whilst providing support for filtering as per data-driven definitions. (#18971))
     'qmk.cli.multibuild',
     'qmk.cli.new.keyboard',
     'qmk.cli.new.keymap',
