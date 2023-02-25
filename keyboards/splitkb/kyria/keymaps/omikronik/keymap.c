@@ -27,8 +27,8 @@ enum layers {
 
 
 // Aliases for readability
-#define QWERTY   DF(_QWERTY)
-#define QWERTY_MAC   DF(_QWERTY)
+#define QWERTY   TG(_QWERTY)
+#define QWERTY_MAC   TG(_QWERTY_MAC)
 #define COLEMAK  DF(_COLEMAK_DH)
 #define DVORAK   DF(_DVORAK)
 
@@ -66,23 +66,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT(
      KC_TAB,  KC_Q,  KC_W   ,  KC_E,   KC_R,   KC_T,                                              KC_Y,   KC_U, KC_I,    KC_O,   KC_P,    KC_QUOT,
      CTL_ESC, KC_A,  KC_S   ,  KC_D,   KC_F,   KC_G,                                               KC_H,   KC_J, KC_K,    KC_L,   KC_SCLN, KC_RSFT,
-     KC_LCTL, KC_Z,  KC_X   ,  KC_C,   KC_V,   KC_B, XXXXXXX, QWERTY_MAC,                XXXXXXX, XXXXXXX, KC_N,   KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RCTL,
-                                KC_PLAY, KC_LGUI, EXT, KC_SPC, KC_LSFT,   XXXXXXX, SHIFT_BSPC, SYM, KC_ENTER, KC_APP
+     KC_LCTL, KC_Z,  KC_X   ,  KC_C,   KC_V,   KC_B, ADJUST, QWERTY_MAC,                XXXXXXX, XXXXXXX, KC_N,   KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RCTL,
+                                KC_PLAY, KC_LGUI, EXT, KC_SPC, KC_LSFT,   XXXXXXX, SHIFT_BSPC, SYM, ALT_ENT, KC_APP
     ),
 
 
     [_QWERTY_MAC] = LAYOUT(
      KC_TAB,  KC_Q,  KC_W   ,  KC_E,   KC_R,   KC_T,                                              KC_Y,   KC_U, KC_I,    KC_O,   KC_P,    KC_QUOT,
      CTL_ESC, KC_A,  KC_S   ,  KC_D,   KC_F,   KC_G,                                               KC_H,   KC_J, KC_K,    KC_L,   KC_SCLN, KC_RSFT,
-     KC_LCTL, KC_Z,  KC_X   ,  KC_C,   KC_V,   KC_B, XXXXXXX, QWERTY,                XXXXXXX, XXXXXXX, KC_N,   KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RCTL,
-                                KC_MEDIA_PLAY_PAUSE, KC_LGUI, EXT_MAC, KC_SPC, KC_LSFT,   XXXXXXX, SHIFT_BSPC, SYM, KC_ENTER, KC_APP
+     KC_LCTL, KC_Z,  KC_X   ,  KC_C,   KC_V,   KC_B, ADJUST, _______,                XXXXXXX, XXXXXXX, KC_N,   KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RCTL,
+                                KC_PLAY, KC_LGUI, EXT_MAC, KC_SPC, KC_LSFT,   XXXXXXX, SHIFT_BSPC, SYM, ALT_ENT, KC_APP
     ),
 
 
     [_EXT] = LAYOUT(
       _______, _______, _______, _______, _______, _______,                                     KC_PGDN, KC_PGUP, KC_HOME,   KC_END,  KC_VOLU, KC_DEL,
       _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                     KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_VOLD, KC_INS,
-      _______, _______, _______, CTL_COPY, _______, CTL_PSTE, _______, KC_SCRL, _______, _______, KC_PAUSE, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_PSCR,
+      _______, _______, _______, CTL_COPY, KC_TAB, CTL_PSTE, _______, KC_SCRL, _______, _______, KC_PAUSE, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_PSCR,
                                  _______, _______, _______, _______, _______, _______, CTRL_BSPC, _______, _______, _______
     ),
 
@@ -90,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_EXT_MAC] = LAYOUT(
       _______, _______, _______, _______, _______, _______,                                     KC_PGDN, KC_PGUP, KC_HOME,   KC_END,  KC_VOLU, KC_DEL,
       _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                     KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_VOLD, KC_INS,
-      _______, KC_CIRC, KC_DLR, CMD_COPY,_______, CMD_PSTE, _______, KC_SCRL, _______, _______, KC_PAUSE, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_PSCR,
+      _______, KC_CIRC, KC_DLR, CMD_COPY, KC_TAB, CMD_PSTE, _______, KC_SCRL, _______, _______, KC_PAUSE, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_PSCR,
                                  _______, _______, _______, _______, _______, _______, CMD_BSPC, _______, _______, _______
     ),
 
