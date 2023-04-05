@@ -1,1 +1,1 @@
-ENCODE_ENABLE = yes
+ENCODE_ENABLE = no
