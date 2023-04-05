@@ -43,11 +43,12 @@ enum layers {
 #define EXT_MAC MO(_EXT_MAC)
 
 #define CTL_ESC  MT(MOD_LCTL, KC_ESC)
+#define SFT_ESC  MT(MOD_LSFT, KC_ESC)
 #define CTL_QUOT MT(MOD_RCTL, KC_QUOTE)
 #define CTL_MINS MT(MOD_RCTL, KC_MINUS)
 #define ALT_ENT  MT(MOD_LALT, KC_ENT)
 
-#define CMD_BSPC LGUI(KC_BSPC)
+#define ALT_BSPC LALT(KC_BSPC)
 #define CTRL_BSPC LCTL(KC_BSPC)
 
 #define CMD_COPY LGUI(KC_C)
@@ -56,6 +57,19 @@ enum layers {
 #define CTL_PSTE LCTL(KC_V)
 
 #define SHIFT_BSPC MT(MOD_LSFT, KC_BSPC)
+
+// Screenshot to clipboard combos for mac and win and my linux km
+#define MAC_SS LGUI(LCTL(LSFT(KC_4)))
+#define WINLIN_SS LGUI(LSFT(KC_S))
+
+// shortcuts for Rectangle window manager on mac
+// for dealing with 32:9 monitor
+// put window in rightrmost quarter
+#define MAC_RQT LCTL(LALT(KC_B))
+// put window in leftmost quarter
+#define MAC_LQT LCTL(LALT(KC_C))
+// put window in center two quarters
+#define MAC_MID LCTL(LALT(KC_R))
 
 #define KC_PLAY KC_MEDIA_PLAY_PAUSE
 // Note: LAlt/Enter (ALT_ENT) is not the same thing as the keyboard shortcut Alt+Enter.
@@ -67,15 +81,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     
     [_QWERTY] = LAYOUT(
      KC_TAB,  KC_Q,  KC_W   ,  KC_E,   KC_R,   KC_T,                                              KC_Y,   KC_U, KC_I,    KC_O,   KC_P,    KC_QUOT,
-     CTL_ESC, KC_A,  KC_S   ,  KC_D,   KC_F,   KC_G,                                               KC_H,   KC_J, KC_K,    KC_L,   KC_SCLN, KC_RSFT,
-     KC_LCTL, KC_Z,  KC_X   ,  KC_C,   KC_V,   KC_B, ADJUST, QWERTY_MAC,  FKEYS,   XXXXXXX, KC_N,   KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RCTL,
+     SFT_ESC, KC_A,  KC_S   ,  KC_D,   KC_F,   KC_G,                                               KC_H,   KC_J, KC_K,    KC_L,   KC_SCLN, KC_RSFT,
+     KC_LCTL, KC_Z,  KC_X   ,  KC_C,   KC_V,   KC_B, ADJUST, QWERTY_MAC,                XXXXXXX, XXXXXXX, KC_N,   KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RCTL,
                                 KC_PLAY, KC_LGUI, EXT, KC_SPC, KC_LSFT,   XXXXXXX, SHIFT_BSPC, SYM, ALT_ENT, KC_APP
     ),
 
 
     [_QWERTY_MAC] = LAYOUT(
      KC_TAB,  KC_Q,  KC_W   ,  KC_E,   KC_R,   KC_T,                                              KC_Y,   KC_U, KC_I,    KC_O,   KC_P,    KC_QUOT,
-     CTL_ESC, KC_A,  KC_S   ,  KC_D,   KC_F,   KC_G,                                               KC_H,   KC_J, KC_K,    KC_L,   KC_SCLN, KC_RSFT,
+     SFT_ESC, KC_A,  KC_S   ,  KC_D,   KC_F,   KC_G,                                               KC_H,   KC_J, KC_K,    KC_L,   KC_SCLN, KC_RSFT,
      KC_LCTL, KC_Z,  KC_X   ,  KC_C,   KC_V,   KC_B, ADJUST, _______,                XXXXXXX, XXXXXXX, KC_N,   KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RCTL,
                                 KC_PLAY, KC_LGUI, EXT_MAC, KC_SPC, KC_LSFT,   XXXXXXX, SHIFT_BSPC, SYM, ALT_ENT, KC_APP
     ),
@@ -83,17 +97,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_EXT] = LAYOUT(
       _______, _______, _______, _______, _______, _______,                                     KC_PGDN, KC_PGUP, KC_HOME,   KC_END,  KC_VOLU, KC_DEL,
-      _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                     KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_VOLD, KC_INS,
+      _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, WINLIN_SS,                                   KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_VOLD, KC_INS,
       _______, _______, _______, CTL_COPY, KC_TAB, CTL_PSTE, _______, KC_SCRL, _______, _______, KC_PAUSE, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_PSCR,
                                  _______, _______, _______, _______, _______, _______, CTRL_BSPC, _______, _______, _______
     ),
 
 
     [_EXT_MAC] = LAYOUT(
-      _______, _______, _______, _______, _______, _______,                                     KC_PGDN, KC_PGUP, KC_HOME,   KC_END,  KC_VOLU, KC_DEL,
-      _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                     KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_VOLD, KC_INS,
+      _______, _______, MAC_LQT, MAC_MID, MAC_RQT, _______,                                     KC_PGDN, KC_PGUP, KC_HOME,   KC_END,  KC_VOLU, KC_DEL,
+      _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, MAC_SS,                                     KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_VOLD, KC_INS,
       _______, KC_CIRC, KC_DLR, CMD_COPY, KC_TAB, CMD_PSTE, _______, KC_SCRL, _______, _______, KC_PAUSE, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_PSCR,
-                                 _______, _______, _______, _______, _______, _______, CMD_BSPC, _______, _______, _______
+                                 _______, _______, _______, _______, _______, _______, ALT_BSPC, _______, _______, _______
     ),
 
 
@@ -169,7 +183,7 @@ bool oled_task_user(void) {
         // clang-format on
 
         oled_write_P(qmk_logo, false);
-        oled_write_P(PSTR("Kyria rev1.0\n\n"), false);
+        oled_write_P(PSTR("Kyria rev3.0\n\n"), false);
 
         // Host Keyboard Layer Status
         oled_write_P(PSTR("Layer: "), false);
@@ -181,10 +195,10 @@ bool oled_task_user(void) {
                 oled_write_P(PSTR("QWERTY MAC\n"), false);
                 break;
             case _EXT:
-                oled_write_P(PSTR("Nav MAC\n"), false);
+                oled_write_P(PSTR("EXT MAC\n"), false);
                 break;
             case _EXT_MAC:
-                oled_write_P(PSTR("Nav\n"), false);
+                oled_write_P(PSTR("EXT\n"), false);
                 break;
             case _SYM:
                 oled_write_P(PSTR("Sym\n"), false);
