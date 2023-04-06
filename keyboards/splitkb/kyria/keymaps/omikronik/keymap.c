@@ -195,10 +195,10 @@ bool oled_task_user(void) {
                 oled_write_P(PSTR("QWERTY MAC\n"), false);
                 break;
             case _EXT:
-                oled_write_P(PSTR("EXT MAC\n"), false);
+                oled_write_P(PSTR("EXT\n"), false);
                 break;
             case _EXT_MAC:
-                oled_write_P(PSTR("EXT\n"), false);
+                oled_write_P(PSTR("EXT MAC\n"), false);
                 break;
             case _SYM:
                 oled_write_P(PSTR("Sym\n"), false);
@@ -208,6 +208,9 @@ bool oled_task_user(void) {
                 break;
             case _ADJUST:
                 oled_write_P(PSTR("Adjust\n"), false);
+                break;
+            case _GAME:
+                oled_write_P(PSTR("GAME\n"), false);
                 break;
             default:
                 oled_write_P(PSTR("Undefined\n"), false);
