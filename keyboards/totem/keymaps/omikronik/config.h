@@ -23,3 +23,5 @@ for more options.
 #undef LOCKING_RESYNC_ENABLE
 #define NO_ACTION_ONESHOT
 
+// OSM configs
+#define ONESHOT_TIMEOUT 2000
