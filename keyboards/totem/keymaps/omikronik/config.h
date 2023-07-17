@@ -9,4 +9,7 @@ for more options.
 // #define MASTER_RIGHT
 
 // OSM configs
-#define ONESHOT_TIMEOUT 2000
+#define ONESHOT_TIMEOUT 1000
+
+// begaviour for mod tap
+#define HOLD_ON_OTHER_KEY_PRESS
