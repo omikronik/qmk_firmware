@@ -8,6 +8,8 @@ for more options.
 #define MASTER_LEFT
 // #define MASTER_RIGHT
 
+#define TAPPING_TERM 200
+
 // OSM configs
 #define ONESHOT_TIMEOUT 1000
 
