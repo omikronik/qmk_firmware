@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include "config_common.h"
+//#include "config_common.h"
 
 /* USB Device descriptor parameter */
 //#define VENDOR_ID 0x706A
@@ -31,6 +31,9 @@
 #define MATRIX_ROW_PINS { C0, B5, B4, B3, B2, B1 }
 #define MATRIX_COL_PINS { B0, D7, D6, D5, D4, D1, D0, C1, C2, C3 }
 
+#define BOOTMAGIC_LITE_ROW 0
+#define BOOTMAGIC_LITE_COLUMN 0
+
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
 
@@ -38,3 +41,14 @@
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
+
+// time required to activate hold
+#define TAPPING_TERM 200
+// if tap key again in the term specified, treat it as a hold, good for accidents
+#define QUICK_TAP_TERM 120
+
+// OSM configs, timeout for OSM
+#define ONESHOT_TIMEOUT 900
+
+// behaviour for mod tap, more ZMK like
+#define HOLD_ON_OTHER_KEY_PRESS

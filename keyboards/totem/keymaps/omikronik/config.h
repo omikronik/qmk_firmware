@@ -16,5 +16,5 @@ for more options.
 // OSM configs, timeout for OSM
 #define ONESHOT_TIMEOUT 900
 
-// begaviour for mod tap, more ZMK like
+// behaviour for mod tap, more ZMK like
 #define HOLD_ON_OTHER_KEY_PRESS
