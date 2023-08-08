@@ -11,7 +11,7 @@ for more options.
 // time required to activate hold
 #define TAPPING_TERM 200
 // if tap key again in the term specified, treat it as a hold, good for accidents
-#define QUICK_TAP_TERM 120
+#define QUICK_TAP_TERM 0
 
 // OSM configs, timeout for OSM
 #define ONESHOT_TIMEOUT 900
