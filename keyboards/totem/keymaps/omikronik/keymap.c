@@ -96,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    [_EXT] = LAYOUT(
  //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
               KC_ESC,   _______,  DSK_L,    DSK_R,     _______,  KC_PGUP,  KC_PGDN,  KC_END,   KC_HOME,   KC_CAPS,
-              M_LALT,   M_LGUI,   M_LSFT,   M_CTRL,    M_RALT,     KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,   KC_DEL,
+              M_LALT,   M_LGUI,   M_LSFT,   M_CTRL,    M_RALT,   KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,   KC_DEL,
     KC_LGUI,  UNDO,     CUT,      COPY,     KC_TAB,    PSTE,     DEL_W,    KC_BSPC,  SSHOT,    _______,   SETTINGS, _______,
                                   _______,  _______,   _______,  KC_ENT,  _______,  _______
  ),
