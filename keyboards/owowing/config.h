@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #pragma once
-
 // time required to activate hold
 #define TAPPING_TERM 200
 // if tap key again in the term specified, treat it as a hold, good for accidents
