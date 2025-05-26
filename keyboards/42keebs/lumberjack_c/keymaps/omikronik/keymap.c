@@ -54,14 +54,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_QUOT,
     KC_LSFT, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_RSFT,
     KC_LCTL, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RCTL,
-    XXXXXXX, XXXXXXX, KC_LALT, KC_LGUI, FN,      KC_SPC,  SFT_BSPC,SYM,    KC_ENT, KC_RGUI,  XXXXXXX, XXXXXXX
+    XXXXXXX, XXXXXXX, KC_LALT, KC_LGUI, FN,      KC_SPC,  SFT_BSPC,SYM,     KC_ENT, KC_RGUI,  XXXXXXX, XXXXXXX
 ),
 /* Function
  */
 [_FUNCTION] = LAYOUT_ortho_5x12(
     KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-    _______, KC_ESC,  _______, DSK_L,   DSK_R,   _______, _______, KC_HOME, KC_END,  KC_F11,  KC_F5,   KC_F12,
-    _______, M_LALT,  M_LGUI,  M_LSFT,  M_CTRL,  M_RALT,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
+    _______, KC_ESC,  M_CTRL,  DSK_L,   DSK_R,   _______, _______, KC_HOME, KC_END,  KC_F11,  KC_F8,   KC_F12,
+    _______, M_LALT,  M_LGUI,  M_LSFT,  M_CTRL,  M_RALT,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, KC_F5,
     _______, UNDO,    CUT,     COPY,    KC_TAB,  PSTE,    DEL_W,   KC_BSPC, SSHOT,   _______, _______, GAME,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
@@ -70,9 +70,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_SYMBOL] = LAYOUT_ortho_5x12(
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    _______, KC_EXLM, KC_AT,   KC_LPRN, KC_RPRN, KC_QUES, KC_PLUS, KC_MINUS, KC_EQL, KC_QUOT, KC_DQUO, _______,
-    _______, KC_HASH, KC_PERC, KC_LCBR, KC_RCBR, KC_GRV,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_COLN, _______,
-    _______, KC_CIRC, KC_DLR,  KC_LBRC, KC_RBRC, KC_TILD, KC_ASTR, KC_AMPR, KC_UNDS, KC_BSLS, KC_PIPE, _______,
+    _______, KC_CIRC, KC_DLR,  KC_LBRC, KC_RBRC, KC_GRV,  KC_PLUS, KC_MINUS, KC_EQL, KC_TILD, KC_DQUO, _______,
+    _______, KC_HASH, KC_PERC, KC_LCBR, KC_RCBR, KC_QUOT, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_COLN, _______,
+    _______, KC_EXLM, KC_AT,   KC_LPRN, KC_RPRN, KC_DQT,  KC_ASTR, KC_AMPR, KC_UNDS, KC_BSLS, KC_PIPE, _______,
     _______, _______, _______, KC_LABK, KC_RABK, _______, _______, _______, _______, _______, _______, _______
 ),
 
@@ -85,3 +85,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, KC_Z,    KC_X,    KC_C,    _______, _______, _______
 ),
 };
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    if (IS_QK_ONE_SHOT_MOD(keycode)) {
+        return 0;
+    }
+    return 200;
+}

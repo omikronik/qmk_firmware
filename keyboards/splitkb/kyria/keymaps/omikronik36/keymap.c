@@ -52,6 +52,13 @@ enum layers {
 #define DSK_R LCTL(LGUI(KC_RGHT))
 #define MUTE LCTL(LSFT(KC_M))
 
+// NEXT/PREV virt desktop
+#define RIGHT LCTL(LGUI(KC_RIGHT))
+#define LEFT LCTL(LGUI(KC_LEFT))
+// NEXT/PREV terminal tab
+#define R_TERM KC_F13
+#define L_TERM KC_F15
+
 // ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 // │ K E Y M A P S                                                                                                          │
 // └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
@@ -60,15 +67,15 @@ enum layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_BASE] = LAYOUT(
-     XXXXXXX, KC_Q,     KC_W,    KC_E,    KC_R,    KC_T,                                         KC_Y,   KC_U,    KC_I,    KC_O,    KC_P,    XXXXXXX,
-     XXXXXXX, KC_A,     KC_S,    KC_D,    KC_F,    KC_G,                                         KC_H,   KC_J,    KC_K,    KC_L,    KC_SCLN, XXXXXXX,
-     XXXXXXX, KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_N,   KC_M,    KC_COMM, KC_DOT,  KC_SLSH, XXXXXXX,
-                                 XXXXXXX, SYM2,    EXT,     KC_SPC,  XXXXXXX, XXXXXXX, SFT_BSPC, SYM,    FNC,     XXXXXXX
+     KC_TAB,  KC_Q,     KC_W,    KC_E,    KC_R,    KC_T,                                         KC_Y,   KC_U,    KC_I,    KC_O,    KC_P,    XXXXXXX,
+     KC_LSFT, KC_A,     KC_S,    KC_D,    KC_F,    KC_G,                                         KC_H,   KC_J,    KC_K,    KC_L,    KC_SCLN, KC_LSFT,
+     KC_LCTL, KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,    KC_ESC,  KC_DEL, KC_RGUI,  FNC,      KC_N,   KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RCTL,
+                                 LEFT,    RIGHT,    EXT,     KC_SPC,  FNC,    KC_ENT,   SFT_BSPC, SYM,    FNC,     XXXXXXX
     ),
 
     [_SYM] = LAYOUT(
       _______, KC_1,    KC_2,    KC_3 ,   KC_4,    KC_5,                                        KC_6 ,   KC_7 ,   KC_8 ,   KC_9 ,   KC_0,    _______,
-      _______, KC_HASH, KC_PERC, KC_LCBR, KC_RCBR, KC_QUOT,                                     KC_PLUS, KC_MINUS,KC_EQL,  KC_QUES, KC_COLN, _______,
+      _______, KC_HASH, KC_PERC, KC_LCBR, KC_RCBR, KC_QUOT,                                     KC_PLUS, KC_MINUS,KC_EQL,  KC_TILD, KC_COLN, _______,
       _______, KC_EXLM, KC_AT,   KC_LPRN, KC_RPRN, KC_DQT,  _______, _______, _______, _______, KC_ASTR, KC_AMPR, KC_UNDS, KC_BSLS, KC_PIPE, _______,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
@@ -83,12 +90,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, KC_ESC,   _______, DSK_L,  DSK_R,   KC_LGUI,                                     KC_PGUP, KC_PGDN, KC_END, KC_HOME,  KC_CAPS, _______,
       _______, M_LALT,   M_LGUI,  M_LSFT, M_CTRL,  M_RALT,                                      KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT,  KC_DEL,  _______,
       _______, UNDO,     CUT,     COPY,   KC_TAB,  PSTE,    _______, _______, _______, _______, DEL_W,   KC_BSPC, SSHOT,  _______,  _______, _______,
-                                 _______, _______, _______, _______, _______, _______, KC_ENT,  _______,  _______, _______
+                                L_TERM , R_TERM, _______, _______, _______, _______, KC_ENT,  _______,  _______, _______
     ),
     [_FNC] = LAYOUT(
       _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                                       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
       _______, M_LALT,  M_LGUI,  M_LSFT,  M_CTRL,  M_RALT,                                      _______, _______, _______, KC_F5,   KC_F11,  _______,
-      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_F12,  _______,
+      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_F8,   KC_F12,  _______,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
     [_SETTINGS] = LAYOUT(
@@ -119,6 +126,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //     ),
 };
 
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    if (IS_QK_ONE_SHOT_MOD(keycode)) {
+        return 0;
+    }
+    return 200;
+}
 /* The default OLED and rotary encoder code can be found at the bottom of qmk_firmware/keyboards/splitkb/kyria/rev1/rev1.c
  * These default settings can be overriden by your own settings in your keymap.c
  * For your convenience, here's a copy of those settings so that you can uncomment them if you wish to apply your own modifications.
